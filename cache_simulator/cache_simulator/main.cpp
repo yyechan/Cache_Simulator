@@ -1,8 +1,11 @@
 /* 컴퓨터구조 2015111730 조예찬 */
+
 #include <iostream>
 #include <vector>
 #include <stdio.h>
 #include <fstream>
+
+#include "simulator.h"
 
 using namespace std;
 
@@ -21,5 +24,11 @@ int main() {
 		return 0;
 	}
 
+	one_level_sim(ifs);  // 1-level cache 실행
+	ifs.close();
+	ifs.open(filename);
+
+	two_level_sim(ifs); // 성능향상을 위한 2-level cache 실행 
+	ifs.close();
 
 }
