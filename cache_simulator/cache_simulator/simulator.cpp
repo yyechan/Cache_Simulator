@@ -1,8 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <stdio.h>
 #include <fstream>
-
 #include "simulator.h"
 #include "utils.h"
 
@@ -22,16 +20,15 @@ int write_miss_cycle = 200;
 
 void one_level_sim(ifstream& file) { // 1-level 캐시의 경우 L2 캐시 하나만으로 동작
 
-	int		L2_read_hit = 0;
-	int		L2_write_hit = 0;
-	int		read_num = 0;
-	int		write_num = 0;
-	int		L2_currentWriteIndex = 0; // 최근에 캐시에 데이터를 작성한 인덱스, FIFO 구현에 필요
-	char	instruction[13];
-	char	readwrite;
-	bool	ishit;
-	uint	address;
-
+	int L2_read_hit = 0;
+	int	L2_write_hit = 0;
+	int	read_num = 0;
+	int	write_num = 0;
+	int	L2_currentWriteIndex = 0; // 최근에 캐시에 데이터를 작성한 인덱스, FIFO 구현에 필요
+	char instruction[13];
+	char readwrite;
+	bool ishit;
+	uint address;
 	AddrInfo curInfo;
 
 	while (!file.eof()) {
@@ -93,23 +90,23 @@ void one_level_sim(ifstream& file) { // 1-level 캐시의 경우 L2 캐시 하나만으로 �
 
 void two_level_sim(ifstream& file) {
 
-	int		L1_read_hit = 0;
-	int		L1_write_hit = 0;
+	int L1_read_hit = 0;
+	int	L1_write_hit = 0;
 
-	int		L2_read_hit = 0;
-	int		L2_write_hit = 0;
+	int	L2_read_hit = 0;
+	int	L2_write_hit = 0;
 
-	int		read_num = 0;
-	int		write_num = 0;
+	int	read_num = 0;
+	int	write_num = 0;
 
-	char	instruction[13];
-	char	readwrite;
-	int		L1_currentWriteIndex = 0;
-	int		L2_currentWriteIndex = 0;
+	char instruction[13];
+	char readwrite;
+	int	L1_currentWriteIndex = 0;
+	int	L2_currentWriteIndex = 0;
 
-	uint		address;
-	AddrInfo	L1_curInfo;
-	AddrInfo	L2_curInfo;
+	uint address;
+	AddrInfo L1_curInfo;
+	AddrInfo L2_curInfo;
 
 	for (auto& iter : L2_cache) {
 		iter = 0;
